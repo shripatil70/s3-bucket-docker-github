@@ -1,1 +1,15 @@
-#buildspec.yml
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing..."
+
+  build:
+    commands:
+      - echo "Deploying to S3..."
+      - aws s3 cp . s3://s3-bucket-docker-github/ --recursive
+
+artifacts:
+  files:
+    - '**/*'
